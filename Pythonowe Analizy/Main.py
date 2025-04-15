@@ -38,9 +38,10 @@ def main():
 
     # Run Statistics
     analyze_log_return_statistics(asset_data)
+    print(stats_dict)
 
     # Export results to Excel
-    export_statistics_to_excel(asset_data)
+    #export_statistics_to_excel(asset_data)
 
 
 # Function start
