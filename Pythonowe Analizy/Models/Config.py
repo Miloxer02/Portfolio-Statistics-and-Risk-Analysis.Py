@@ -1,7 +1,7 @@
 Config = {
 
-    "start_date": "2023-01-01",
-    "end_date": "2024-01-01",
+    "start_date": "2020-01-01",
+    "end_date": "2025-01-01",
     "export_path": "Excels",
   
     "assets": [
