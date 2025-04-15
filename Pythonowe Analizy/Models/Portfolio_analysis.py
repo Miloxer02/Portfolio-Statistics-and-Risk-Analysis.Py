@@ -1,17 +1,16 @@
 import numpy as np
 
 def analyze_log_return_statistics(asset_data):
-    print("\n[2] Descriptive Statistics – Logarithmic Returns:")
+    print("\n[2]✅ Descriptive Statistics – Logarithmic Returns:")
 
     for name, df in asset_data.items():
-        print(f"\n📈 {name} – latest closing price:")
-        print(df[['Date', 'Zamkniecie']].tail(1))
 
         # Calculate daily logarithmic returns
         df['Log_Return'] = np.log(df['Zamkniecie'] / df['Zamkniecie'].shift(1))
         df.dropna(inplace=True)
 
         # Calculate statistical measures
+        price = df['Zamkniecie'].iloc[-1]
         mean = df['Log_Return'].mean()
         std = df['Log_Return'].std()
         var = df['Log_Return'].var()
