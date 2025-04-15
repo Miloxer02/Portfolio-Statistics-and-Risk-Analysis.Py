@@ -7,13 +7,12 @@ from Models.Export_excel import export_statistics_to_excel
 
 import pandas as pd
 import datetime
-import matplotlib.pyplot as plt
 
-# Function for downloading data
+# Function for downloading data from Download_Stooq, Download_Yahoo and Condig
 def main():
     print("Starting procedure")
 
-    print("\n[1] Downloading data...")
+    print("\n[1]✅ Downloading data...")
     asset_data = {}
 
     for asset in Config["assets"]:
@@ -36,14 +35,12 @@ def main():
 
         asset_data[asset["name"]] = df
 
-    # Run Statistics
-    analyze_log_return_statistics(asset_data)
-    print(stats_dict)
+    # Run Statistics from Portfolio_Analysis
+    stats_dict = analyze_log_return_statistics(asset_data)
 
-    # Export results to Excel
-    #export_statistics_to_excel(asset_data)
+    # Export results to Excel from Export_excel
+    export_statistics_to_excel(stats_dict)
 
-
-# Function start
+# Function Run
 print(main())
 

@@ -6,8 +6,8 @@ def export_statistics_to_excel(stats_dict, export_path="Excels", file_name="port
     os.makedirs(export_path, exist_ok=True)
 
     # Create DataFrame where each row is an asset, each column is a statistic
-    stats_df = pd.DataFrame(stats_dict).T  # Transpose: assets as rows
-    stats_df.index.name = "Asset"
+    stats_df = pd.DataFrame(stats_dict)
+    stats_df.index.name = "Statistic"
 
     # Export to Excel
     output_file = os.path.join(export_path, file_name)
