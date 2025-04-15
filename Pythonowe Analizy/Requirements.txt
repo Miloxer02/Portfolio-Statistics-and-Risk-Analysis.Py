@@ -1,0 +1,13 @@
+# pip install -r requirements.txt
+
+pandas
+numpy
+matplotlib
+seaborn
+yfinance
+pandas-datareader
+scipy
+statsmodels
+openpyxl
+datatime
+riskfolio-lib
