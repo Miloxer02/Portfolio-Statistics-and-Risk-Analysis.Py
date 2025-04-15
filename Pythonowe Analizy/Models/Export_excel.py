@@ -1,32 +1,27 @@
 import pandas as pd
 import os
 
-def export_statistics_to_excel(stats_dict, mvp_weights=None, export_path="Excels", file_name="portfolio_statistics.xlsx"):
-    """
-    Export descriptive statistics and optional Minimum Variance Portfolio (MVP) weights to an Excel file.
-
-    Parameters:
-    - stats_dict (dict): Dictionary containing statistics for each asset
-    - mvp_weights (pd.Series, optional): Series with MVP weights
-    - export_path (str): Folder where the Excel file will be saved
-    - file_name (str): Name of the output Excel file
-    """
+def export_statistics_to_excel(stats_dict, mvp_weights=None, portfolio_stats=None, export_path="Excels", file_name="portfolio_statistics.xlsx"):
+    # Ensure the export directory exists
     os.makedirs(export_path, exist_ok=True)
 
-    # Prepare statistics DataFrame
-    stats_df = pd.DataFrame(stats_dict)
-    stats_df.index.name = "Statistic"
-
-    # Create Excel writer
     output_file = os.path.join(export_path, file_name)
-    with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:
-        # Write statistics to one sheet
+
+    with pd.ExcelWriter(output_file, engine="xlsxwriter") as writer:
+        # 1. Statistics
+        stats_df = pd.DataFrame.from_dict(stats_dict, orient="index").T
+        stats_df.index.name = "Statistic"
         stats_df.to_excel(writer, sheet_name="Statistics")
 
-        # Write MVP weights if provided
+        # 2. MVP weights
         if mvp_weights is not None:
-            weights_df = mvp_weights.to_frame(name="Weight")
-            weights_df.index.name = "Asset"
-            weights_df.to_excel(writer, sheet_name="MinVarPortfolio")
+            mvp_df = pd.DataFrame(mvp_weights, columns=["Weight"])
+            mvp_df.index.name = "Asset"
+            mvp_df.to_excel(writer, sheet_name="MVP_Weights")
 
-    print(f"\n[4]✅ Statistics and MVP weights exported to Excel: {output_file}")
+        # 3. Portfolio-level stats
+        if portfolio_stats is not None:
+            port_df = pd.DataFrame(portfolio_stats, index=["Portfolio"])
+            port_df.to_excel(writer, sheet_name="MVP_Stats")
+
+    print(f"\n[4]✅ Exported full analysis to Excel: {output_file}")

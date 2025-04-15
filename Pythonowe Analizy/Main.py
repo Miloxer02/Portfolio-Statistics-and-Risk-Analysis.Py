@@ -40,10 +40,14 @@ def main():
     stats_dict = analyze_log_return_statistics(asset_data)
 
     # Calculate Minimal Variance Portfolio
-    mvp_weights = calculate_min_variance_portfolio(asset_data)
+    mvp_weights, port_mean, port_std = calculate_min_variance_portfolio(asset_data)
 
+    portfolio_stats = {
+    "Portfolio Mean Return": port_mean,
+    "Portfolio Standard Deviation": port_std
+}
     # Export results to Excel from Export_excel
-    export_statistics_to_excel(stats_dict, mvp_weights)
+    export_statistics_to_excel(stats_dict, mvp_weights=mvp_weights, portfolio_stats=portfolio_stats)
 
 # Function Run
 print(main())
