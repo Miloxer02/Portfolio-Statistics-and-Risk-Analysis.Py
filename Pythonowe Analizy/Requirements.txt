@@ -11,3 +11,4 @@ statsmodels
 openpyxl
 datatime
 riskfolio-lib
+python-binance	
