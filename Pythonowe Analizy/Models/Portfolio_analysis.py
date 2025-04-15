@@ -23,7 +23,7 @@ def analyze_log_return_statistics(asset_data):
         var_99 = np.percentile(df['Log_Return'], 1)
         es_99 = df[df['Log_Return'] <= var_99]['Log_Return'].mean()
         
-
+        """
         # Display results
         print(f"Mean Return: {mean:.4f}")
         print(f"Standard Deviation: {std:.4f}")
@@ -35,4 +35,4 @@ def analyze_log_return_statistics(asset_data):
         print(f"Expected Shortfall 95%: {es_95:.4f}")
         print(f"Empirical VaR 99%: {var_99:.4f}")
         print(f"Expected Shortfall 99%: {es_99:.4f}")
-
+        """
