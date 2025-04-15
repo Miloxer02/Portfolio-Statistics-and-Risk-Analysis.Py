@@ -9,7 +9,8 @@ def analyze_log_return_statistics(asset_data):
         df = df.copy()
         df['Log_Return'] = np.log(df['Zamkniecie'] / df['Zamkniecie'].shift(1))
         df.dropna(inplace=True)
-
+        asset_data[name] = df
+        
         var_95 = np.percentile(df['Log_Return'], 5)
         es_95 = df[df['Log_Return'] <= var_95]['Log_Return'].mean()
         var_99 = np.percentile(df['Log_Return'], 1)

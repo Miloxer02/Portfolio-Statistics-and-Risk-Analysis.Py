@@ -4,6 +4,7 @@ from Models.Download_Stooq import download_stooq
 # from Models.Download_Yahoo import download_yahoo
 from Models.Portfolio_analysis import analyze_log_return_statistics
 from Models.Export_excel import export_statistics_to_excel
+from Models.Minimal_Variance_Portfolio import calculate_min_variance_portfolio
 
 import pandas as pd
 import datetime
@@ -38,8 +39,11 @@ def main():
     # Run Statistics from Portfolio_Analysis
     stats_dict = analyze_log_return_statistics(asset_data)
 
+    # Calculate Minimal Variance Portfolio
+    mvp_weights = calculate_min_variance_portfolio(asset_data)
+
     # Export results to Excel from Export_excel
-    export_statistics_to_excel(stats_dict)
+    export_statistics_to_excel(stats_dict, mvp_weights)
 
 # Function Run
 print(main())
