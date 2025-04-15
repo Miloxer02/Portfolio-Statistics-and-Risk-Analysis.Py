@@ -46,19 +46,19 @@ It automates data retrieval, portfolio analysis, risk measurement, simulations, 
 
 ---
 
-📦 Python-Analysis
-│
-├── Models/
-│   ├── Main.py                 # Main pipeline
-│   ├── Export_excel.py         # Excel export functions
-│   ├── Portfolio_analysis.py   # Risk & statistics
-│   ├── Simulation.py           # Monte Carlo simulations
-│   └── Config.json             # Ticker list & settings
-│
-├── Data/                       # Raw or cleaned datasets
-├── Excels/                     # Final Excel outputs
-├── Requirements.txt
-└── README.md
+## 📁 Project Structure
+
+- `Models/`  
+  &nbsp;&nbsp; ├── `Main.py` – Main pipeline  
+  &nbsp;&nbsp; ├── `Export_excel.py` – Excel export functions  
+  &nbsp;&nbsp; ├── `Portfolio_analysis.py` – Risk & statistics  
+  &nbsp;&nbsp; ├── `Simulation.py` – Monte Carlo simulations  
+  &nbsp;&nbsp; └── `Config.json` – Portfolio tickers & weights
+
+- `Data/` – Raw or cleaned datasets  
+- `Excels/` – Final Excel outputs  
+- `Requirements.txt` – Python dependencies  
+- `README.md` – Project description
 
 ---
 
