@@ -1,12 +1,15 @@
 
+from Models.Config import Config
 from Models.Download_Stooq import download_stooq
 # from Models.Download_Yahoo import download_yahoo
-from Models.Config import Config
+from Models.Portfolio_analysis import analyze_log_return_statistics
+from Models.Export_excel import export_statistics_to_excel
 
 import pandas as pd
 import datetime
 import matplotlib.pyplot as plt
 
+# Function for downloading data
 def main():
     print("Starting procedure")
 
@@ -30,10 +33,16 @@ def main():
                 end_date=Config["end_date"],
                 interval=asset["interval"]
             )
-        
-        asset_data[asset["name"]] = df 
-       
 
-# Odpalanie funkcji
+        asset_data[asset["name"]] = df
+
+    # Run Statistics
+    analyze_log_return_statistics(asset_data)
+
+    # Export results to Excel
+    export_statistics_to_excel(asset_data)
+
+
+# Function start
 print(main())
 

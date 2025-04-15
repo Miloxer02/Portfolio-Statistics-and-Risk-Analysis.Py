@@ -3,7 +3,7 @@
 pandas
 numpy
 matplotlib
-seaborn
+os
 yfinance
 pandas-datareader
 scipy
@@ -12,3 +12,5 @@ openpyxl
 datatime
 riskfolio-lib
 python-binance	
+xlsxwriter
+datatime
