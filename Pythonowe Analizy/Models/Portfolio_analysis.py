@@ -4,6 +4,8 @@ def analyze_log_return_statistics(asset_data):
     stats_dict_daily = {}
     stats_dict_annual = {}
 
+    print("\n[2]✅ Calculating Statistics using Log Returns")
+
     for name, df in asset_data.items():
         df = df.copy()
         df['Log_Return'] = np.log(df['Zamkniecie'] / df['Zamkniecie'].shift(1))
@@ -15,6 +17,7 @@ def analyze_log_return_statistics(asset_data):
         var = df['Log_Return'].var()
         skew = df['Log_Return'].skew()
         kurt = df['Log_Return'].kurt()
+
         var_95 = np.percentile(df['Log_Return'], 5)
         es_95 = df[df['Log_Return'] <= var_95]['Log_Return'].mean()
         var_99 = np.percentile(df['Log_Return'], 1)

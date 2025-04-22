@@ -1,10 +1,12 @@
 from Models.Config import Config
 from Models.Download_Stooq import download_stooq
-from Models.Download_Yahoo import download_yahoo
+# from Models.Download_Yahoo import download_yahoo
 from Models.Portfolio_analysis import analyze_log_return_statistics
 from Models.Export_excel import export_statistics_to_excel
+from Models.Minimal_Variance_Portfolio import calculate_min_variance_portfolio
 
 import pandas as pd
+import datetime
 
 # Function for downloading data from Download_Stooq, Download_Yahoo and Config
 def main():
@@ -36,8 +38,18 @@ def main():
     # Run Statistics from Portfolio_Analysis
     stats_dict_daily, stats_dict_annual = analyze_log_return_statistics(asset_data)
 
+    # Calculate Minimum Variance Portfolio
+    mvp_weights, port_mean, port_std = calculate_min_variance_portfolio(asset_data)
+
+    portfolio_stats = {
+        "Portfolio Mean Return": port_mean,
+        "Portfolio Standard Deviation": port_std
+    }
+
     # Export results to Excel from Export_excel
-    export_statistics_to_excel(stats_dict_daily, stats_dict_annual)
+    export_statistics_to_excel(stats_dict_daily, stats_dict_annual,
+                               mvp_weights=mvp_weights,
+                               portfolio_stats=portfolio_stats)
 
 # Run the function
 print(main())

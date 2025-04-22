@@ -2,14 +2,15 @@ Config = {
 
     "start_date": "2020-01-01",
     "end_date": "2025-01-01",
+    # Choose data time frame for analysis
     "export_path": "Excels",
   
     "assets": [
       {
         "name": "NASDAQ",
         "ticker": "etfbndxpl.pl",
-        "source": "stooq",
-        "interval": "d"
+        "source": "stooq", # Or "yfinance" if data is not from stooq
+        "interval": "d" # "d" for daily, "w" for weekly, "m" for monthly
       },
       {
         "name": "S&P500",

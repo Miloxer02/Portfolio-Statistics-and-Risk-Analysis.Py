@@ -2,7 +2,6 @@ import os
 import pandas as pd
 
 def export_statistics_to_excel(stats_dict_daily, stats_dict_annual,
-                               mvp_weights=None, portfolio_stats=None,
                                export_path="Excels", file_name="portfolio_statistics.xlsx"):
 
     os.makedirs(export_path, exist_ok=True)
@@ -19,15 +18,9 @@ def export_statistics_to_excel(stats_dict_daily, stats_dict_annual,
         df_annual.index.name = "Statistic"
         df_annual.to_excel(writer, sheet_name="Annual_Statistics")
 
-        # 3. MVP Weights
-        if mvp_weights is not None:
-            mvp_df = pd.DataFrame(mvp_weights, columns=["Weight"])
-            mvp_df.index.name = "Asset"
-            mvp_df.to_excel(writer, sheet_name="MVP_Weights")
+        # 3. 10-Day Statistics (approximate: daily * 10)
+        df_10day = df_daily * 10
+        df_10day.index.name = "Statistic"
+        df_10day.to_excel(writer, sheet_name="10Day_Statistics")
 
-        # 4. Portfolio Stats
-        if portfolio_stats is not None:
-            port_df = pd.DataFrame(portfolio_stats, index=["Portfolio"])
-            port_df.to_excel(writer, sheet_name="MVP_Stats")
-
-    print(f"\n[4]✅ Exported full analysis to Excel: {output_file}")
+    print(f"\n[3]✅ Exported full analysis to Excel: {output_file}")

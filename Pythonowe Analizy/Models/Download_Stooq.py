@@ -1,5 +1,4 @@
 import pandas as pd
-import datetime
 
 # Function to download historical data from Stooq
 def download_stooq(ticker, start_date, end_date, interval="d"):

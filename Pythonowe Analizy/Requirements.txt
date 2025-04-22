@@ -2,15 +2,6 @@
 
 pandas
 numpy
-matplotlib
 os
 yfinance
-pandas-datareader
-scipy
-statsmodels
-openpyxl
-datatime
-riskfolio-lib
-python-binance	
 xlsxwriter
-datatime
