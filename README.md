@@ -1,7 +1,7 @@
-# 🧠 Python-Analysis: Portfolio Risk & Return System
+# 🧠 Portfolio Risk & Return Analyzer
 
-This project is a fully functional portfolio risk analysis tool, built in Python and designed to work with real-time financial data from Yahoo Finance and Stooq.  
-It automates data retrieval, portfolio statistics computation, risk measurement, and clean Excel export.
+A lightweight Python-based system for analyzing financial assets through empirical return statistics and risk measures.  
+The project supports real-time data from Yahoo Finance and Stooq, and produces clear, Excel-exportable outputs.
 
 ---
 
