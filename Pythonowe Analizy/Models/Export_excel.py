@@ -14,8 +14,8 @@ def export_statistics_to_excel(stats_dicts,
             df = pd.DataFrame.from_dict(stats, orient="index").T
             df.index.name = "Statistic"
 
-            # Generate proper sheet name (e.g. "1Day_Statistics")
-            sheet_name = f"{interval}Day_Statistics" if interval != "Annual" else "Annual_Statistics"
+            # Use interval directly (e.g. "1D", "3D", "Annual")
+            sheet_name = f"{interval}_Statistics"
             df.to_excel(writer, sheet_name=sheet_name)
 
     print(f"\n[3]✅ Exported full analysis to Excel: {output_file}")
