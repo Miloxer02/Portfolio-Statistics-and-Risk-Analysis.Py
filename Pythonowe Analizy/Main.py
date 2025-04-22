@@ -6,9 +6,7 @@ from Models.Export_excel import export_statistics_to_excel
 
 import pandas as pd
 
-# Function for downloading data from Download_Stooq, Download_Yahoo and Config
 def main():
-    print("Starting procedure")
 
     print("\n[1]✅ Downloading data...")
     asset_data = {}
@@ -30,14 +28,20 @@ def main():
                 end_date=Config["end_date"],
                 interval=asset["interval"]
             )
+        else:
+            print(f"❌ Unknown data source for {asset['name']}")
+            continue
 
-        asset_data[asset["name"]] = df
+        if not df.empty:
+            asset_data[asset["name"]] = df
+        else:
+            print(f"❌ Data for {asset['name']} is empty and will be skipped.")
 
-    # Run Statistics from Portfolio_Analysis
-    stats_dict_daily, stats_dict_annual = analyze_log_return_statistics(asset_data)
+    # 2. Analyze statistics for all defined intervals
+    stats_dicts = analyze_log_return_statistics(asset_data)
 
-    # Export results to Excel from Export_excel
-    export_statistics_to_excel(stats_dict_daily, stats_dict_annual)
+    # 3. Export to Excel with all intervals as separate sheets
+    export_statistics_to_excel(stats_dicts)
 
 # Run the function
-print(main())
+main()

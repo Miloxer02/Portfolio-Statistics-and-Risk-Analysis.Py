@@ -1,36 +1,21 @@
 import os
 import pandas as pd
 
-def export_statistics_to_excel(stats_dict_daily, stats_dict_annual,
-                               export_path="Excels", file_name="portfolio_statistics.xlsx"):
-
+def export_statistics_to_excel(stats_dicts,
+                               export_path="Excels",
+                               file_name="portfolio_statistics.xlsx"):
+    # Create export directory if it doesn't exist
     os.makedirs(export_path, exist_ok=True)
     output_file = os.path.join(export_path, file_name)
 
     with pd.ExcelWriter(output_file, engine="xlsxwriter") as writer:
-        # 1. Daily Statistics
-        df_daily = pd.DataFrame.from_dict(stats_dict_daily, orient="index").T
-        df_daily.index.name = "Statistic"
-        df_daily.to_excel(writer, sheet_name="1Day_Statistics")
+        for interval, stats in stats_dicts.items():
+            # Convert nested dictionary to DataFrame
+            df = pd.DataFrame.from_dict(stats, orient="index").T
+            df.index.name = "Statistic"
 
-        # 2. 3-Day Statistics (approximate: daily * 3)
-        df_3day = df_daily * 3
-        df_3day.index.name = "Statistic"
-        df_3day.to_excel(writer, sheet_name="3Day_Statistics")
-
-        # 3. 5-Day Statistics (approximate: daily * 5)
-        df_5day = df_daily * 5
-        df_5day.index.name = "Statistic"
-        df_5day.to_excel(writer, sheet_name="5Day_Statistics")
-
-        # 4. 10-Day Statistics (approximate: daily * 10)
-        df_10day = df_daily * 10
-        df_10day.index.name = "Statistic"
-        df_10day.to_excel(writer, sheet_name="10Day_Statistics")
-
-        # 5. Annual Statistics
-        df_annual = pd.DataFrame.from_dict(stats_dict_annual, orient="index").T
-        df_annual.index.name = "Statistic"
-        df_annual.to_excel(writer, sheet_name="Annual_Statistics")
+            # Generate proper sheet name (e.g. "1Day_Statistics")
+            sheet_name = f"{interval}Day_Statistics" if interval != "Annual" else "Annual_Statistics"
+            df.to_excel(writer, sheet_name=sheet_name)
 
     print(f"\n[3]✅ Exported full analysis to Excel: {output_file}")
