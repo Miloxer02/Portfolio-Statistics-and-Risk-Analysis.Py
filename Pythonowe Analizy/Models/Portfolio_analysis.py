@@ -8,7 +8,7 @@ def analyze_log_return_statistics(asset_data):
 
     for name, df in asset_data.items():
         df = df.copy()
-        df['Log_Return'] = np.log(df['Zamkniecie'] / df['Zamkniecie'].shift(1))
+        df['Log_Return'] = np.log(df['Close'] / df['Close'].shift(1))
         df.dropna(inplace=True)
 
         # Daily
@@ -24,7 +24,7 @@ def analyze_log_return_statistics(asset_data):
         es_99 = df[df['Log_Return'] <= var_99]['Log_Return'].mean()
 
         stats_dict_daily[name] = {
-            "Last Close Price": df['Zamkniecie'].iloc[-1],
+            "Last Close Price": df['Close'].iloc[-1],
             "Mean Return": mean,
             "Standard Deviation": std,
             "Variance": var,
@@ -37,7 +37,7 @@ def analyze_log_return_statistics(asset_data):
         }
 
         stats_dict_annual[name] = {
-            "Last Close Price": df['Zamkniecie'].iloc[-1],
+            "Last Close Price": df['Close'].iloc[-1],
             "Mean Return": mean * 250,
             "Standard Deviation": std * np.sqrt(250),
             "Variance": var * 250,

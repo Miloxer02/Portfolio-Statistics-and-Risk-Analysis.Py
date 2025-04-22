@@ -1,7 +1,7 @@
 Config = {
 
-    "start_date": "2020-01-01",
-    "end_date": "2025-01-01",
+    "start_date": "2023-01-01",
+    "end_date": "2024-01-01",
     # Choose data time frame for analysis
     "export_path": "Excels",
   
@@ -29,6 +29,12 @@ Config = {
         "ticker": "etfbw20lv.pl",
         "source": "stooq",
         "interval": "d"
+      },
+      {
+        "name": "APPLE",
+        "ticker": "AAPL",
+        "source": "yfinance",
+        "interval": "1d" # "1d" for daily, "1wk" for weekly, "1mo" for monthly
       }
     ]
   }
