@@ -1,11 +1,11 @@
-# 🧠 Portfolio Risk & Return Analyzer
+# Portfolio Risk & Return Analyzer
 
-A lightweight Python-based system for analyzing financial assets through empirical return statistics and risk measures.  
+A Python-based system for analyzing financial assets through empirical return statistics and risk measures.  
 The project supports real-time data from Yahoo Finance and Stooq, and produces clear, Excel-exportable outputs.
 
 ---
 
-## 📊 Features
+## Features
 
 - **Data Collection**
   - Automated download from Yahoo Finance & Stooq
@@ -29,7 +29,7 @@ The project supports real-time data from Yahoo Finance and Stooq, and produces c
 
 ---
 
-## ⚠️ VaR Interpretation by Interval
+## VaR Interpretation by Interval
 
 The Value at Risk (VaR) and Expected Shortfall (ES) are calculated differently depending on the time horizon:
 
@@ -40,7 +40,7 @@ The Value at Risk (VaR) and Expected Shortfall (ES) are calculated differently d
 
 ---
 
-## 🧪 Tech Stack
+## Python Packages
 
 - `pandas`
 - `numpy`
@@ -50,24 +50,33 @@ The Value at Risk (VaR) and Expected Shortfall (ES) are calculated differently d
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 - Models/  
-  &nbsp;&nbsp; ├── Main.py – Main pipeline  
+  &nbsp;&nbsp; ├── Main.py – Main function
   &nbsp;&nbsp; ├── Export_excel.py – Excel export functions  
-  &nbsp;&nbsp; ├── Portfolio_analysis.py – Risk & statistics calculation  
-  &nbsp;&nbsp; ├── Download_Stooq.py – Fetch data from stooq.pl  
-  &nbsp;&nbsp; ├── Download_Yahoo.py – Fetch data from Yahoo Finance  
+  &nbsp;&nbsp; ├── Portfolio_analysis.py – Risk & statistics calculations
+  &nbsp;&nbsp; ├── Download_Stooq.py – Data from stooq
+  &nbsp;&nbsp; ├── Download_Yahoo.py – Data from Yahoo Finance  
   &nbsp;&nbsp; └── Config.py – Configuration: tickers, sources, intervals, dates
 
-- Data/ – Raw ticker lists and external datasets  
+- Data/ – ticker list  
 - Excels/ – Final Excel outputs with full statistics  
 - Requirements.txt – List of required Python packages  
 - README.md – Project documentation and usage guide
 
 ---
 
-✍️ Author
+## How To Use
+
+1. Clone or download
+2. Open `Config.py` and add your tickers (stooq or yfinance)
+3. Set your preferred time frame for the data 
+4. Run Main.py
+
+---
+
+Author
 
 **Miłosz Łebecki** (Miloxer02)  
 _Quantitative Asset and Risk Management Student_
