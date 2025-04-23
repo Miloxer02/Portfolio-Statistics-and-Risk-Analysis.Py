@@ -52,13 +52,15 @@ The Value at Risk (VaR) and Expected Shortfall (ES) are calculated differently d
 
 ## Project Structure
 
-- Models/  
-  &nbsp;&nbsp; ├── Main.py – Main function
-  &nbsp;&nbsp; ├── Export_excel.py – Excel export functions  
-  &nbsp;&nbsp; ├── Portfolio_analysis.py – Risk & statistics calculations
-  &nbsp;&nbsp; ├── Download_Stooq.py – Data from stooq
-  &nbsp;&nbsp; ├── Download_Yahoo.py – Data from Yahoo Finance  
-  &nbsp;&nbsp; └── Config.py – Configuration: tickers, sources, intervals, dates
+```
+Models/
+├── Main.py               – Main function
+├── Export_excel.py       – Excel export functions
+├── Portfolio_analysis.py – Risk & statistics calculations
+├── Download_Stooq.py     – Data from stooq
+├── Download_Yahoo.py     – Data from Yahoo Finance
+└── Config.py             – Configuration: tickers, sources, intervals, dates
+```
 
 - Data/ – ticker list  
 - Excels/ – Final Excel outputs with full statistics  
@@ -70,9 +72,10 @@ The Value at Risk (VaR) and Expected Shortfall (ES) are calculated differently d
 ## How To Use
 
 1. Clone or download
-2. Open `Config.py` and add your tickers (stooq or yfinance)
-3. Set your preferred time frame for the data 
-4. Run Main.py
+2. Install Requirements.txt
+3. Open `Config.py` and add your tickers (stooq or yfinance)
+4. Set your preferred time frame for the data 
+5. Run Main.py
 
 ---
 
