@@ -82,4 +82,3 @@ Models/
 Author
 
 **Miłosz Łebecki** (Miloxer02)  
-_Quantitative Asset and Risk Management Student_
